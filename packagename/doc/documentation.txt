@@ -1,0 +1,10 @@
+This folder can contain any extra documentation that is not covered in the
+project's README file.
+
+In particular, it can be used as the place to put all docstrings as separate
+textfiles, and import them from the relevant modules, to avoid having to clutter
+the source code with long docstrings that are 'user' oriented, keeping the
+source code focused on 'implementation' comments and documentation.
+
+See packagename.txt in the same folder for an example, and note how this is
+used from within the package's __init__.py file.

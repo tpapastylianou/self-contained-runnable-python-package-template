@@ -1,0 +1,20 @@
+# This is the project's main configuration file.
+#
+# Add any variables you want to later import to your project, using normal
+# python syntax.
+#
+# Any configuration variable you add here will later need to be imported and
+# dealt with appropriately by the project's __init__ file.
+
+import os
+
+# Choose verbosity of output
+VERBOSE  = True
+
+# Define a folder containing 'inputs' expected by the program (e.g. datasets).
+# The default set here defines an 'inputs' folder inside the package itself.
+INPUTS_PATH = os.path.join( os.path.abspath( os.path.dirname( __file__ ) ), 'inputs' )
+
+# Choose where to save your outputs (e.g. analysis results).
+# The default option here defines an 'outputs' folder inside the package itself.
+OUTPUTS_PATH = os.path.join( os.path.abspath( os.path.dirname( __file__ ) ), 'outputs' )

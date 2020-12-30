@@ -1,0 +1,19 @@
+This is the documentation for package 'packagename'.
+It is imported by the __init__ file during first import and used as the
+package's docstring.
+
+In a real project this would be detailed documentation relating to the project
+and syntax, that goes beyond the scope of the package's README file.
+
+Keeping documentation here instead of placing it at the top of the __init__ file
+(and on the top of modules as long strings more generally) has several
+advantages:
+
+- All documentation is kept in one, standard, easily searchable (i.e. grep)
+  location.
+- Code is uncluttered by long docstrings at the start of the
+  file, and can focus on more practical comments and explanations relating to
+  the 'implementation', without cluttering the sources with things that relate
+  to 'usage'.
+- The doc folder may contain other kinds of documentation beyond docstrings,
+  such as interactive notebooks, demos, etc.

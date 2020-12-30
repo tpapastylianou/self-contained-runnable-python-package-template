@@ -1,0 +1,68 @@
+# Python Executable Package Template
+__author__  = "Tasos Papastylianou"
+__version__ = "v1.0.0"
+
+
+
+#######################
+### Package Description
+#######################
+
+This package is a template for creating a python executable package.
+
+In other words, a package that can be run directly, e.g.:
+
+    python3 -m packagename
+
+If one wishes to further wrap this package into a zipfile (e.g. package.zip), it
+can still be executed without unzipping, as follows:
+
+    PYTHONPATH=package.zip python3 -m packagename
+
+Unit Tests can be run by typing:
+
+    python3 -m packagename.tests
+
+This README file is itself a template for what such an executable package's
+README file could look like.
+
+
+
+###################################
+### Modules defined in this package
+###################################
+
+    .
+    ├── CONFIG.ME                : Editable configuration file
+    ├── doc                      : Documentation folder
+    │   └── documentation.txt    : 
+    ├── __init__.py              : Package initialisation file
+    ├── inputs                   : Inputs required by the program
+    │   └── inputs.txt           : 
+    ├── __main__.py              : Main point of execution
+    ├── outputs                  : Outputs produced by the program
+    │   └── outputs.txt          :
+    ├── README                   : This file
+    ├── res                      : Resources required by program (e.g. multimedia)
+    │   └── resources.txt        : 
+    ├── src                      : All modules 
+    │   ├── dataAnalyser.py      : Module for analysing data
+    │   ├── dataGetter.py        : Module for obtaining data
+    │   └── reportCreator.py     : Module for creating reports
+    └── tests                    : Unit tests
+        ├── __main__.py          : Main function for unittests
+        └── test_dataAnalyser.py : Unit Tests for dataAnalyser module.
+    
+
+
+#################
+### Configuration
+#################
+
+The following variables can be configured, by editing the CONFIG.ME file directly.
+
+ - INPUTS_PATH
+ - OUTPUTS_PATH
+ - VERBOSE
+
+See CONFIG.ME file for allowed values and explanations.
