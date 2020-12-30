@@ -1,12 +1,15 @@
-# Package initialization file.
+# Package initialisation file.
 #
 # This file's role is to grab the relevant configuration preferences from the
-# CONFIG.ME file. To add/edit configuration options, editing the CONFIG.ME file
-# directly (using normal python syntax).
+# CONFIG.ME file and initialise the package.
 #
 # Do not add variables here that would be considered configuration parameters;
 # only use this file to load the relevant configuration preferences from the
 # CONFIG.ME file, and to make them available to the other modules.
+
+# To actually add/edit configuration options, edit the CONFIG.ME file directly
+# (using normal python syntax), and then import / export here as needed.
+
 
 import os
 

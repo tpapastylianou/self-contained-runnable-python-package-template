@@ -24,9 +24,9 @@ from . import INPUTS_PATH
 from . import OUTPUTS_PATH
 
 # Import project-specific modules
-from . private import dataGetter
-from . private import dataAnalyser
-from . private import dataPresenter
+from . src import dataGetter
+from . src import dataAnalyser
+from . src import dataPresenter
 
 
 

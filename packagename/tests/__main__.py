@@ -1,9 +1,9 @@
 """
-This is the __main__ module for the package.tests module / subpackage.
+This is the __main__ module for the packagename.tests module / subpackage.
 
-In the same way that the core package itself is executable, the package.tests
-package is executable too in the same manner, simply by providing its own
-__main__ module.
+In the same way that the core package itself is executable, the
+packagename.tests package is executable too in the same manner, simply by
+providing its own __main__ module.
 
 It can be run independently of the core package, e.g. as
 
