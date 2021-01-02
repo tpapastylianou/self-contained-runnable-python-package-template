@@ -1,0 +1,6 @@
+v1.0.2: - Added a ChangeLog to project structure (you're currently reading this).
+        - tests/test_dataAnalyser.py: Fixed typo in class name (Test_ -> Test_run_mcmc)
+-------
+v1.0.1: - __main__.py: Fixed bug/typo (imported private instead of src folder)
+-------
+v1.0.0: - Created core package structure.

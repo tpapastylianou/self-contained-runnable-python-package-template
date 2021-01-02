@@ -12,7 +12,7 @@ from .. src . dataAnalyser import run_mcmc
 # 'run_mcmc' function
 # -------------------
 
-class Test_( unittest.TestCase ):
+class Test_run_mcmc( unittest.TestCase ):
 
     def setUpClass    ():   print( "### Unit Tests for run_mcmc()" )
     def tearDownClass ():   print( )
