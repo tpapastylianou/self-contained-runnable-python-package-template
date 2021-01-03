@@ -49,9 +49,9 @@ def run( InputsPath : str = None):
     if InputsPath is None:   InputsPath = INPUTS_PATH
 
     Headers, RawData = get_raw_data( InputsPath )
-    PreProcessedData = preprocess_data( RawData )
+    PreprocessedData = preprocess_data( RawData )
 
-    return PreProcessedData
+    return PreprocessedData
 
 
 
@@ -73,7 +73,6 @@ def get_raw_data( InputsPath : str ):
 
     CsvFile.close()
 
-
     return Headers, RawData
 
 
@@ -85,6 +84,9 @@ def preprocess_data( RawData ):
     """
 
   # Preprocess the data
-    PreprocessedData = [i + 1 for i in RawData]
+    PreprocessedData = []
+    for Row in RawData:
+        PreprocessedData.append( [numpy.float( i ) for i in Row] )   # convert csv string to numpy float
+    PreprocessedData = numpy.array( PreprocessedData )
 
     return PreprocessedData

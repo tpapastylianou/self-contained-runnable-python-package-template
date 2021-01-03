@@ -26,7 +26,7 @@ import nbformat   # for programmatic creation of jupyter notebooks
 # internal imports
 # ----------------
 
-from .. import OUTPUTS_PATH
+None
 
 
 # -------------------------------------------------------
@@ -41,11 +41,16 @@ None
 ### Primary function
 ####################
 
-def run( Data ):
+def run( Data, OutputsPath ):
     """
     Create a report (e.g. jupyter notebook format)
     """
 
-    # ... report code goes here
-
-    return
+  # ... report code goes here. e.g.:
+    nb = nbformat.v4.new_notebook()
+    nb['cells'] = [
+                    nbformat.v4.new_markdown_cell( "The Result was:" ),
+                    nbformat.v4.new_code_cell( repr( Data.tolist() ) )
+                  ]
+    OutputFile = os.path.join( OutputsPath, 'output.ipynb' )
+    with open( OutputFile, 'w') as f:   nbformat.write(nb, f)

@@ -4,3 +4,5 @@ Obviously this could be an external folder as well, but placing it inside the pa
 one to distribute the package with an example output included.
 
 Make sure to edit the CONFIG.ME file appropriately as well!
+
+Note: As an example, running this template package will generate an 'output.ipynb' jupyter notebook file in this folder.

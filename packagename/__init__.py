@@ -36,6 +36,7 @@ os.symlink( os.path.join( PKGROOT, 'CONFIG.ME' ),
 from . CONFIG import INPUTS_PATH
 from . CONFIG import OUTPUTS_PATH
 from . CONFIG import VERBOSE
+from . CONFIG import MCMC_ENGINE
 
 # Remove the temporary symlink we created to the CONFIG.ME file
 os.unlink( os.path.join( PKGROOT, 'CONFIG.py' ) )
@@ -53,6 +54,7 @@ if VERBOSE:
     print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting PKGROOT to {ANSICOLOR_LIGHTORANGE}{PKGROOT}{ANSICOLOR_RESET}"           )
     print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting INPUTS_PATH to {ANSICOLOR_LIGHTORANGE}{INPUTS_PATH}{ANSICOLOR_RESET}"   )
     print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting OUTPUTS_PATH to {ANSICOLOR_LIGHTORANGE}{OUTPUTS_PATH}{ANSICOLOR_RESET}" )
+    print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting MCMC_ENGINE to {ANSICOLOR_LIGHTORANGE}{MCMC_ENGINE}{ANSICOLOR_RESET}"   )
 
 
 __all__ = [
@@ -60,6 +62,7 @@ __all__ = [
     'DOCPATH',
     'INPUTS_PATH',
     'OUTPUTS_PATH',
+    'MCMC_ENGINE',
     'VERBOSE'
 ]
 

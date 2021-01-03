@@ -12,7 +12,6 @@ whole package.
 import os
 import csv
 import numpy
-import Stan_MCMC_engine   # imaginary module
 
 
 # ----------------
@@ -22,11 +21,12 @@ import Stan_MCMC_engine   # imaginary module
 # Import project variables (provided via __init__)
 from . import INPUTS_PATH
 from . import OUTPUTS_PATH
+from . import MCMC_ENGINE
 
 # Import project-specific modules
 from . src import dataGetter
 from . src import dataAnalyser
-from . src import dataPresenter
+from . src import reportCreator
 
 
 
@@ -46,12 +46,11 @@ def main():
     Data = dataGetter.run( INPUTS_PATH )
 
   # Analyse data (initialise with an appropriate MCMC Engine!)
-    dataAnalyser.MCMCEngine = Stan_MCMC_engine
-    Results = dataAnalyser.run( Data        )
+    dataAnalyser.MCMCEngine = MCMC_ENGINE
+    Results = dataAnalyser.run( Data )
 
   # Create report  from results
     reportCreator.run( Results, OUTPUTS_PATH )
-
 
 
 

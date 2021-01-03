@@ -34,8 +34,7 @@ The overall structure is as follows:
     └── README          : Package's README file.
 
 
-The template provided is simply a slightly more concretized example of this
-hierarchy, demonstrating some of the implementation details that could be taken
-into consideration when creating your own package. (note that it is still
-intended as a template, however. Do not expect it to create meaningful output if
-you run it at the terminal without modifications).
+The template provided is simply a slightly more concretized example of this hierarchy, demonstrating some of the
+implementation details that could be taken into consideration when creating your own package. As such, the template
+itself is a runnable example, producing nominal output purely for demonstration purposes. However, note that it is still
+primarily intended as a template, and its main purpose is to inspect all the files contained and modify as needed.
