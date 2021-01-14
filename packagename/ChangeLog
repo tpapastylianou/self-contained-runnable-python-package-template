@@ -1,3 +1,11 @@
+v2.0.0: - Outer README is now markdown, for nicer github integration (see #2)
+        - Added requirements.txt to package root directory (as per #3)
+        - Added optional 'lib' directory (as per #4)
+        - Replaced documentation-related files of folders with README files (as
+          per #5)
+        - Replaced CONFIG.ME file with a config directory (as per #6).
+        - __main__ now has a check to confirm it's being run as a package
+------
 v1.0.3: - Modified template, to make it run without errors, producing nominal
           output.
         - Fixed bugs (dataPresenter renamed to reportCreator)
