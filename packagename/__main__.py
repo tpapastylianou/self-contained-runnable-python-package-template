@@ -4,6 +4,15 @@ It should define a main function to be executed, representing execution of the
 whole package.
 """
 
+# Confirm we are running in package mode
+assert len( __package__ ) > 0, """
+
+The '__main__' module does not seem to have been run in the context of a
+runnable package ... did you forget to add the '-m' flag?
+
+Usage: python3 -m <packagename>
+"""
+
 
 # ----------------
 # external imports
@@ -51,6 +60,7 @@ def main():
 
   # Create report  from results
     reportCreator.run( Results, OUTPUTS_PATH )
+
 
 
 
