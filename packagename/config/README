@@ -1,0 +1,10 @@
+## This folder stores the project's main configuration file, CONFIG.py, which should be edited by hand.
+##
+## CONFIG.py is intended to be edited by hand, and act as a normal python module defining variables in python syntax,
+## which are to be imported by the package at initialization time
+##
+## Note that this 'importing' is not automatic; the package's __init__ file needs to be manually written so as to
+## correspond to the config file correctly, importing / processing the expected config variables appropriately.
+##
+## Optionally, this folder can also hold backups, or templates, such that the main configuration can be 'toggled' simply
+## by creating a 'CONFIG.py' symbolic link pointing to the desired backup or template config file.

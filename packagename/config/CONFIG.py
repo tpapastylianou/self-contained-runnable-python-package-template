@@ -11,15 +11,6 @@ import os
 # Choose verbosity of output
 VERBOSE  = True
 
-# Define a folder containing 'inputs' expected by the program (e.g. datasets).
-# The default set here defines an 'inputs' folder inside the package itself.
-INPUTS_PATH = os.path.join( os.path.abspath( os.path.dirname( __file__ ) ), 'inputs' )
-
-# Choose where to save your outputs (e.g. analysis results).
-# The default option here defines an 'outputs' folder inside the package itself.
-OUTPUTS_PATH = os.path.join( os.path.abspath( os.path.dirname( __file__ ) ), 'outputs' )
-
-
 # As an example, suppose our package is effectively an experiment, and we can
 # choose here between two appropriate "MCMC Engines", e.g. let's say "stan" or
 # "emcee".
@@ -43,3 +34,14 @@ class Stan : run = lambda x: { 'stats': "Stats...", 'results': x }
 class Emcee: run = lambda x: { 'stats': "Stats...", 'results': x }
 
 MCMC_ENGINE = Stan
+
+
+# Here, instead of defining an INPUTS_PATH variable that would be imported
+# directly, we instead provide a function that is to be called by the
+# __init__.py file, because we want to initialise these relative to the package
+# root, which is not known until initialization time.
+def get_inputs_path( PkgRoot ):   return os.path.join( PkgRoot, 'inputs' )
+
+# Here we provide a function that __init__.py will use to generate an
+# OUTPUTS_PATH variable, in the same way as with INPUTS_PATH above.
+def get_outputs_path( PkgRoot ):   return os.path.join( PkgRoot, 'inputs' )

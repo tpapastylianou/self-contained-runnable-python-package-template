@@ -1,45 +1,43 @@
 # Package initialisation file.
 #
-# This file's role is to grab the relevant configuration preferences from the
-# CONFIG.ME file and initialise the package.
+# This file's role is to grab the relevant configuration preferences from
+# /config/CONFIG.py and initialise the package.
 #
 # Do not add variables here that would be considered configuration parameters;
 # only use this file to load the relevant configuration preferences from the
-# CONFIG.ME file, and to make them available to the other modules.
+# CONFIG.py file, and to make them available to the other modules.
 
-# To actually add/edit configuration options, edit the CONFIG.ME file directly
-# (using normal python syntax), and then import / export here as needed.
+# To actually add/edit configuration options, edit the /config/CONFIG.py file
+# directly (using normal python syntax), and then import / export here as
+# needed.
 
 
 import os
 
-PKGROOT = os.path.abspath( os.path.dirname(  __file__ ) )
-DOCPATH = os.path.join( PKGROOT, 'doc' )
+# Detect package directory, and use to create standard paths relative to package
+# root.
+PKGROOT    = os.path.abspath( os.path.dirname(  __file__ ) )
+DOCPATH    = os.path.join( PKGROOT, 'doc' )
 
-ANSICOLOR_LIGHTBLUE   = "\033[94m"
-ANSICOLOR_LIGHTORANGE = "\033[93m"
-ANSICOLOR_RESET       = "\033[39m"
+# ANSI colour escape codes (for use in logging/debug messages)
+ANSI_RED    = '\033[91m';   ANSI_GREEN  = '\033[92m';   ANSI_ORANGE = '\033[93m';
+ANSI_BLUE   = '\033[94m';   ANSI_PURPLE = '\033[95m';   ANSI_RESET  = '\033[39m';
+
 
 
 ############################
 ### Parse configuration file
 ############################
 
-# In order to load this configuration file as a python module, we need to create
-# a symbolic link with a .py extension instead. We will unlink this after we
-# have imported everything we wanted from this configuration file.
-
-os.symlink( os.path.join( PKGROOT, 'CONFIG.ME' ),
-            os.path.join( PKGROOT, 'CONFIG.py' )  )
+from . config import CONFIG
 
 # Import all configuration constants
-from . CONFIG import INPUTS_PATH
-from . CONFIG import OUTPUTS_PATH
-from . CONFIG import VERBOSE
-from . CONFIG import MCMC_ENGINE
+VERBOSE     = CONFIG.VERBOSE
+MCMC_ENGINE = CONFIG.MCMC_ENGINE
 
-# Remove the temporary symlink we created to the CONFIG.ME file
-os.unlink( os.path.join( PKGROOT, 'CONFIG.py' ) )
+# Some variables may need to be generated dynamically from the config:
+INPUTS_PATH  = CONFIG.get_inputs_path ( PKGROOT )
+OUTPUTS_PATH = CONFIG.get_outputs_path( PKGROOT )
 
 
 
@@ -47,23 +45,28 @@ os.unlink( os.path.join( PKGROOT, 'CONFIG.py' ) )
 ### Initialize package
 ######################
 
+def printconfig( Varname, Var ):
+    print(  f"{ANSI_BLUE}__init__: Setting {Varname} " +
+            f"to {ANSI_ORANGE}{Var}{ANSI_RESET}"           )
+
 if VERBOSE not in [ True, False ]:
     raise ValueError( 'Bad value given for VERBOSE environmental variable. Needs to be True or False.' )
 
 if VERBOSE:
-    print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting PKGROOT to {ANSICOLOR_LIGHTORANGE}{PKGROOT}{ANSICOLOR_RESET}"           )
-    print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting INPUTS_PATH to {ANSICOLOR_LIGHTORANGE}{INPUTS_PATH}{ANSICOLOR_RESET}"   )
-    print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting OUTPUTS_PATH to {ANSICOLOR_LIGHTORANGE}{OUTPUTS_PATH}{ANSICOLOR_RESET}" )
-    print( f"{ANSICOLOR_LIGHTBLUE}__init__: Setting MCMC_ENGINE to {ANSICOLOR_LIGHTORANGE}{MCMC_ENGINE}{ANSICOLOR_RESET}"   )
+    printconfig( 'PKGROOT'     , PKGROOT      )
+    printconfig( 'INPUTS_PATH' , INPUTS_PATH  )
+    printconfig( 'OUTPUTS_PATH', OUTPUTS_PATH )
+    printconfig( 'MCMC_ENGINE' , MCMC_ENGINE  )
 
 
 __all__ = [
     'PKGROOT',
     'DOCPATH',
+    'VERBOSE',
+
     'INPUTS_PATH',
     'OUTPUTS_PATH',
-    'MCMC_ENGINE',
-    'VERBOSE'
+    'MCMC_ENGINE'
 ]
 
 # Import package documentation (to avoid having to dump it all on the top of
