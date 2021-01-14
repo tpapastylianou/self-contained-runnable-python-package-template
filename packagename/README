@@ -1,4 +1,4 @@
-# Python Executable Package Template
+# Python Self-contained Runnable Package Template
 __author__  = "Tasos Papastylianou"
 __version__ = "v1.0.3"
 
@@ -8,61 +8,97 @@ __version__ = "v1.0.3"
 ### Package Description
 #######################
 
-This package is a template for creating a python executable package.
+This package serves as a template for creating a self-contained, runnable
+python3 package.
 
-In other words, a package that can be run directly, e.g.:
+In other words, a package whose purpose is to be run directly from the
+command-line, rather than simply serving as a kind of module-encapsulating
+structure for use in scripts.
+
+See 'Usage' section below on how one might run such a package directly.
+
+Note: This README file is itself a template for what such an executable
+package's README file might look like.
+
+
+
+#########
+### Usage
+#########
+
+This package template is intended to be 'runnable'; in other words, it can
+be run directly from the command-line as if it were a normal python module,
+i.e.:
 
     python3 -m packagename
 
 If one wishes to further wrap this package into a zipfile (e.g. package.zip), it
-can still be executed without unzipping, as follows:
+can still be run directly without unzipping, as follows:
 
     PYTHONPATH=package.zip python3 -m packagename
 
-Unit Tests can be run by typing:
+Unit Tests can also be run directly by typing:
 
     python3 -m packagename.tests
 
-This README file is itself a template for what such an executable package's
-README file could look like.
+
+
+#############################
+### Installation / Setting up
+#############################
+
+This particular template does not require any further installation or setting
+up. It can be run directly as shown above.
+
+However, in more elaborate projects, this section could contain instructions
+on, e.g.:
+
+ - How to set up a python virtual environment and install particular versions of
+   required external python packages from pypi (see also the provided
+   requirements.txt file)
+
+ - Compile / initialize any external libraries provided in the project's 'lib'
+   directory that require it, etc.
+
+Also, this might be a good place to point out that the user should manually edit
+the CONFIG.py file in the /config directory before using the package, if they
+are not happy with the default configuration provided by the package author.
 
 
 
-###################################
-### Modules defined in this package
-###################################
+###########################################
+### Files / Modules defined in this package
+###########################################
 
-    .
-    ├── CONFIG.ME                : Editable configuration file
+    packagename
+    ├── config                   : Configuration folder
+    │   ├── CONFIG.py            : Editable, primary configuration file
+    │   └── README               : Information regarding the 'config' folder
     ├── doc                      : Documentation folder
-    │   └── documentation.txt    : 
-    ├── __init__.py              : Package initialisation file
-    ├── inputs                   : Inputs required by the program
-    │   └── inputs.txt           : 
-    ├── __main__.py              : Main point of execution
-    ├── outputs                  : Outputs produced by the program
-    │   └── outputs.txt          :
+    │   ├── packagename.__doc__  : Example of an importable docstring.
+    │   └── README               : Information regarding the 'doc' folder
+    ├── inputs                   : Optional folder containing inputs
+    │   ├── data.csv             : Example input file
+    │   └── README               : Information regarding the 'inputs' folder
+    ├── lib                      : Optional folder containing third-party
+    │   │                          dependencies
+    │   └── README               : Information regarding the 'lib' folder
+    ├── outputs                  : Optional folder for collecting outputs
+    │   └── README               : Information regarding the 'outputs' folder
+    ├── res                      : Put resources here (e.g. images, audio)
+    │   └── README               : Information regarding the 'res' folder
+    ├── src                      : Contains the packages modules
+    │   ├── dataGetter.py        : Example of a simple 'functional' module
+    │   ├── dataAnalyser.py      : Example of slightly more elaborate module
+    │   ├── reportCreator.py     : Example module generating a jupyter notebook
+    │   └── README               : Information regarding the 'src' folder
+    ├── tests                    : Unit Tests folder
+    │   ├── __main__.py          : Independent main function for unittests
+    │   ├── README               : Information regarding the 'tests' folder
+    │   └── test_dataAnalyser.py : Example unit test suite
+    ├── ChangeLog                : ChangeLog keeping track of version changes
+    ├── __init__.py              : Package's initialisation module
+    ├── LICENSE                  : Project's License (e.g. GPL3)
+    ├── __main__.py              : Package's main execution module
     ├── README                   : This file
-    ├── res                      : Resources required by program (e.g. multimedia)
-    │   └── resources.txt        : 
-    ├── src                      : All modules 
-    │   ├── dataAnalyser.py      : Module for analysing data
-    │   ├── dataGetter.py        : Module for obtaining data
-    │   └── reportCreator.py     : Module for creating reports
-    └── tests                    : Unit tests
-        ├── __main__.py          : Main function for unittests
-        └── test_dataAnalyser.py : Unit Tests for dataAnalyser module.
-    
-
-
-#################
-### Configuration
-#################
-
-The following variables can be configured, by editing the CONFIG.ME file directly.
-
- - INPUTS_PATH
- - OUTPUTS_PATH
- - VERBOSE
-
-See CONFIG.ME file for allowed values and explanations.
+    └── requirements.txt         : pip3-compatible requirements file
