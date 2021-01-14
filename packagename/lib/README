@@ -1,0 +1,10 @@
+This (optional) folder contains any external libraries that are required to be
+packaged within the project (e.g. dependencies that are typically not dealt with
+by simply installing them externally on the user's system through pip).
+
+Typical scenarios might include:
+
+ - Stray, third-party python modules
+ - Libraries from other languages that will be interfaced with in the main
+   source code (which typically might need some form of compilation or
+   initialization first).
