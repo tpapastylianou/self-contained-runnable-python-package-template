@@ -44,4 +44,4 @@ def get_inputs_path( PkgRoot ):   return os.path.join( PkgRoot, 'inputs' )
 
 # Here we provide a function that __init__.py will use to generate an
 # OUTPUTS_PATH variable, in the same way as with INPUTS_PATH above.
-def get_outputs_path( PkgRoot ):   return os.path.join( PkgRoot, 'inputs' )
+def get_outputs_path( PkgRoot ):   return os.path.join( PkgRoot, 'outputs' )
