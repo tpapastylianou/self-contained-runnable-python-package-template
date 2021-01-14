@@ -1,8 +1,0 @@
-This folder can be used to place inputs that may be expected by the project.
-
-Obviously this could be an external folder as well, but placing it inside the package has its benefits, e.g. enabling
-one to create a standalone python-executable zipfile which contains the data required already.
-
-Make sure to edit the CONFIG.ME file appropriately as well!
-
-Note: We have included a trivial data.csv file here as an example, which allows the template to run without errors.

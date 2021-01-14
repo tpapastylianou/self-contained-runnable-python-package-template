@@ -1,0 +1,27 @@
+This is the folder where all project-defined modules / submodules are defined.
+
+In an ideal project, the package's '__main__' module should only contain
+high-level / top-down instructions, in effect looking more like a table of
+contents to the different steps followed by the program, where these are
+implemented as calls to the appropriate modules defined here.
+
+
+Modules defined here can further be divided into two categories:
+
+ - 'utility' modules: modules that effectively serve as a logical grouping /
+   container for related functions
+
+ - 'functional' modules: modules that are responsible for a single step of the
+   algorithm, reflected by that module's 'run' function, and intended to be run
+   as a unit, rather than as serving as a repository of related functions.
+
+
+Typically these can be informally differentiated by the nature of their names:
+
+'Utility' modules are named after nouns that describe their utility, e.g.
+'graphics_utilities', 'db_utilities' etc.
+
+Whereas 'functional' modules are named after their 'role', e.g. 'reportCreator'
+(i.e. calling this module by its 'run' function will create the report),
+'dataPreprocessor' (calling this module will preprocess the data in a prescribed
+manner), etc.

@@ -6,5 +6,9 @@ textfiles, and import them from the relevant modules, to avoid having to clutter
 the source code with long docstrings that are 'user' oriented, keeping the
 source code focused on 'implementation' comments and documentation.
 
-See packagename.txt in the same folder for an example, and note how this is
-used from within the package's __init__.py file.
+Recommended filenames for docstringsare packagename.__doc__ for the package
+itself and packagename.src.modulename.__doc__ for all others, such that the
+names reflect the respective modules to which they refer.
+                                                                           
+An example packagename.__doc__ is provided here; note how this is used from
+within the package's __init__.py file.

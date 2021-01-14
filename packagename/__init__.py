@@ -72,5 +72,5 @@ __all__ = [
 # Import package documentation (to avoid having to dump it all on the top of
 # this file instead). You could follow a similar strategy in other modules if
 # they are to contain significant documentation that would clutter the sources.
-PkgDoc = os.path.join( DOCPATH, 'packagename.txt' )
+PkgDoc = os.path.join( DOCPATH, 'packagename.__doc__' )
 with open( PkgDoc, 'r' ) as f:   __doc__ = f.read()
