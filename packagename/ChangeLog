@@ -1,3 +1,4 @@
+v2.1.0: - Added venv check to __init__.py, to promote runtime consistency.
 v2.0.0: - Outer README is now markdown, for nicer github integration (see #2)
         - Added requirements.txt to package root directory (as per #3)
         - Added optional 'lib' directory (as per #4)
