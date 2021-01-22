@@ -12,6 +12,11 @@
 # needed.
 
 
+
+#################################################################
+### Initial imports and sanity checks required for initialization
+#################################################################
+
 import os
 
 # Detect package directory, and use to create standard paths relative to package
@@ -22,6 +27,26 @@ DOCPATH    = os.path.join( PKGROOT, 'doc' )
 # ANSI colour escape codes (for use in logging/debug messages)
 ANSI_RED    = '\033[91m';   ANSI_GREEN  = '\033[92m';   ANSI_ORANGE = '\033[93m';
 ANSI_BLUE   = '\033[94m';   ANSI_PURPLE = '\033[95m';   ANSI_RESET  = '\033[39m';
+
+
+# Check that we are running in the context of a python virtual env. This check
+# is useful, e.g., when the package represents an experiment, and you want to
+# ensure consistency/reproducibility between runs, in terms of what python
+# packages/versions are installed and used in the experiment. It can be removed
+# if this is not an issue for a particular package, or turned into a
+# RuntimeError if you want to be more defensive about its presence.
+
+if not os.getenv( 'VIRTUAL_ENV' ): print(
+f"""{ANSI_PURPLE}
+
+Warning: No suitable VIRTUAL_ENV environmental variable detected.
+
+In order to ensure consistency / reproducibility between runs, you might want to
+consider always running this package from within a suitable python virtual
+environment, containing the python package versions specified in the package's
+requirements.txt file.
+
+{ANSI_RESET}""" )
 
 
 
