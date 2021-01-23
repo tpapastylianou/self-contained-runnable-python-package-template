@@ -18,6 +18,22 @@
 #################################################################
 
 import os
+import sys
+import importlib
+
+
+# Check if --config was specified. If not, load the default CONFIG.py file.
+if '--config' in sys.argv:
+    ConfigParam  = sys.argv[ sys.argv.index( '--config' ) + 1 ]
+    ConfigPath   = os.path.abspath( os.path.dirname( ConfigParam ) )
+    ConfigModule = os.path.basename( ConfigParam )
+    assert ConfigModule.endswith('py'), "The specified config file needs to be a valid python module"
+    ConfigModule = ConfigModule[ : -3 ]
+    sys.path.append( ConfigPath )
+    CONFIG = importlib.import_module( ConfigModule )
+else:
+    from . config import CONFIG
+
 
 # Detect package directory, and use to create standard paths relative to package
 # root.
@@ -25,8 +41,9 @@ PKGROOT    = os.path.abspath( os.path.dirname(  __file__ ) )
 DOCPATH    = os.path.join( PKGROOT, 'doc' )
 
 # ANSI colour escape codes (for use in logging/debug messages)
-ANSI_RED    = '\033[91m';   ANSI_GREEN  = '\033[92m';   ANSI_ORANGE = '\033[93m';
-ANSI_BLUE   = '\033[94m';   ANSI_PURPLE = '\033[95m';   ANSI_RESET  = '\033[39m';
+class ANSI:
+    RED    = '\033[91m';   GREEN  = '\033[92m';   ORANGE = '\033[93m';
+    BLUE   = '\033[94m';   PURPLE = '\033[95m';   RESET  = '\033[39m';
 
 
 # Check that we are running in the context of a python virtual env. This check
@@ -37,7 +54,7 @@ ANSI_BLUE   = '\033[94m';   ANSI_PURPLE = '\033[95m';   ANSI_RESET  = '\033[39m'
 # RuntimeError if you want to be more defensive about its presence.
 
 if not os.getenv( 'VIRTUAL_ENV' ): print(
-f"""{ANSI_PURPLE}
+f"""{ANSI.PURPLE}
 
 Warning: No suitable VIRTUAL_ENV environmental variable detected.
 
@@ -46,15 +63,17 @@ consider always running this package from within a suitable python virtual
 environment, containing the python package versions specified in the package's
 requirements.txt file.
 
-{ANSI_RESET}""" )
+Press ENTER if you'd like to continue regardless (or Ctrl-C to abort)
+
+{ANSI.RESET}""" )
+try: input()   # i.e. press Enter
+except KeyboardInterrupt: print( '\n\nExiting...' ); exit()
 
 
 
-############################
-### Parse configuration file
-############################
-
-from . config import CONFIG
+#####################################
+### Parse selected configuration file
+#####################################
 
 # Import all configuration constants
 VERBOSE     = CONFIG.VERBOSE
@@ -71,8 +90,8 @@ OUTPUTS_PATH = CONFIG.get_outputs_path( PKGROOT )
 ######################
 
 def printconfig( Varname, Var ):
-    print(  f"{ANSI_BLUE}__init__: Setting {Varname} " +
-            f"to {ANSI_ORANGE}{Var}{ANSI_RESET}"           )
+    print(  f"{ANSI.BLUE}__init__: Setting {Varname} " +
+            f"to {ANSI.ORANGE}{Var}{ANSI.RESET}"           )
 
 if VERBOSE not in [ True, False ]:
     raise ValueError( 'Bad value given for VERBOSE environmental variable. Needs to be True or False.' )

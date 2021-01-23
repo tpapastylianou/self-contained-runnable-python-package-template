@@ -1,0 +1,25 @@
+## This folder stores 'alt' (i.e. alternative) configuration files, which
+## could be used to override the default CONFIG.py file contained in the
+## parent directory. These may represent backups, templates, etc.
+##
+## This may be a useful thing to have, e.g. if the package represents an
+## experiment, and one might want to run the experiment under a different
+## configuration than the default.
+##
+## The approach used in the current template, is to have the __init__.py react
+## to the presence of an optional '--config' option, taking a config file as an
+## argument. In the presence of this option, configuration options are read from
+## the specified config file, otherwise the default CONFIG.py file of the parent
+## folder is used.
+## As an example, the ALT_CONFIG.py file contained in this folder could be run
+## by running the package as follows:
+##
+##     python3 -m packagename --config packagename/config/alt/ALT_CONFIG.py
+##
+##
+## However, there are other ways in which such a folder could be used. E.g. if
+## you don't like having to pass commandline options, you could simply treat the
+## default CONFIG.py file of the parent folder as a symbolic link to one of the
+## alternative configurations contained in this folder. In this way, one can
+## simply 'change' configurations by updating the symbolic link to point to the
+## desired config file in this directory, as appropriate.
