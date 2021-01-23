@@ -53,7 +53,8 @@ class ANSI:
 # if this is not an issue for a particular package, or turned into a
 # RuntimeError if you want to be more defensive about its presence.
 
-if not os.getenv( 'VIRTUAL_ENV' ): print(
+if not os.getenv( 'VIRTUAL_ENV' ):
+    print(
 f"""{ANSI.PURPLE}
 
 Warning: No suitable VIRTUAL_ENV environmental variable detected.
@@ -66,8 +67,8 @@ requirements.txt file.
 Press ENTER if you'd like to continue regardless (or Ctrl-C to abort)
 
 {ANSI.RESET}""" )
-try: input()   # i.e. press Enter
-except KeyboardInterrupt: print( '\n\nExiting...' ); exit()
+    try: input()   # i.e. press Enter
+    except KeyboardInterrupt: print( '\n\nExiting...' ); exit()
 
 
 

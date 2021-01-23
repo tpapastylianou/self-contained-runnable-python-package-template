@@ -1,3 +1,4 @@
+v2.2.1: - Fixed bug - unwanted pause for input despite venv
 v2.2.0: - Added --config option for loading 'alt' configuration files.
         - Converted ANSI_colour variables to ANSI colour class.
 v2.1.0: - Added venv check to __init__.py, to promote runtime consistency.
